@@ -6,8 +6,6 @@ import Details from "./components/Details";
 import Cart from "./components/Cart";
 import Default from "./components/Default";
 
-// import logo from "./logo.svg";
-
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
