@@ -4,11 +4,13 @@ import logo from "../logo.svg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { ButtonContainer } from "./Button";
+import styled from "styled-components";
 
 class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-sm bg-primary navbar-dark px-sm-5">
+      <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
         <Link to="/">
           <img
             src={logo}
@@ -20,19 +22,28 @@ class Navbar extends Component {
         <ul className="navbar-nav align-items-center">
           <li className="nav-item ml-5">
             <Link to="/" className="nav-link">
-              Product
+              product
             </Link>
           </li>
         </ul>
         <Link to="/cart" className="ml-auto">
-          <button>
-            <FontAwesomeIcon icon={faCartPlus} />
+          <ButtonContainer>
+            <FontAwesomeIcon icon={faCartPlus} className="mr-2" />
             My Cart
-          </button>
+          </ButtonContainer>
         </Link>
-      </nav>
+      </NavWrapper>
     );
   }
 }
+
+const NavWrapper = styled.nav`
+  background: var(--mainBlue);
+  .nav-link {
+    color: var(--mainWhite) !important;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+  }
+`;
 
 export default Navbar;
