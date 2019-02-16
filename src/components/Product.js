@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ProductConsumer } from "../context";
+// import { ProductConsumer } from "../context";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
@@ -60,12 +60,12 @@ Product.protoTypes = {
 const ProductWrapper = styled.div`
   .card {
     border-color: transparent;
-    transition: all 1s linear;
+    transition: all 0.5s linear;
   }
   .card-footer {
     background: transparent;
     border-top: transparent;
-    transition: all 1s linear;
+    transition: all 0.5s linear;
   }
   &:hover {
     .card {
@@ -81,7 +81,7 @@ const ProductWrapper = styled.div`
     overflow: hidden;
   }
   .card-img-top {
-    transition: all 1s linear;
+    transition: all 0.5s linear;
   }
   .img-container:hover .card-img-top {
     transform: scale(1.2);
@@ -98,10 +98,13 @@ const ProductWrapper = styled.div`
     font-size: 1.4rem;
     border-radius: 0.5rem 0 0 0;
     transform: translate(100%, 100%);
-    transition: all 1s linear;
+    transition: all 0.5s linear;
     &:hover {
       color: var(--mainBlue);
       cursor: pointer;
+    }
+    &:focus {
+      outline: none;
     }
   }
   .img-container:hover .cart-btn {
