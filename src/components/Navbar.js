@@ -29,7 +29,7 @@ class Navbar extends Component {
         <Link to="/cart" className="ml-auto">
           <ButtonContainer>
             <FontAwesomeIcon icon={faCartPlus} className="mr-2" />
-            My Cart
+            my cart
           </ButtonContainer>
         </Link>
       </NavWrapper>

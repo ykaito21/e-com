@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { ProductConsumer } from "../context";
 
 class Product extends Component {
   render() {
@@ -12,27 +13,31 @@ class Product extends Component {
     return (
       <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
         <div className="card">
-          <div
-            className="img-container p-5"
-            onClick={() => console.log("click me")}
-          >
-            <Link to="/detail">
-              <img src={img} alt="product" className="card-img-top" />
-            </Link>
-            <button
-              className="cart-btn"
-              disabled={inCart ? true : false}
-              onClick={() => console.log("cart")}
-            >
-              {inCart ? (
-                <p className="text-capitalize mb-0" disabled>
-                  in cart
-                </p>
-              ) : (
-                <FontAwesomeIcon icon={faCartPlus} />
-              )}
-            </button>
-          </div>
+          <ProductConsumer>
+            {value => (
+              <div
+                className="img-container p-5"
+                onClick={() => value.handleDetail(id)}
+              >
+                <Link to="/detail">
+                  <img src={img} alt="product" className="card-img-top" />
+                </Link>
+                <button
+                  className="cart-btn"
+                  disabled={inCart ? true : false}
+                  onClick={() => value.addToCart(id)}
+                >
+                  {inCart ? (
+                    <p className="text-capitalize mb-0" disabled>
+                      in cart
+                    </p>
+                  ) : (
+                    <FontAwesomeIcon icon={faCartPlus} />
+                  )}
+                </button>
+              </div>
+            )}
+          </ProductConsumer>
           {/* card footer */}
           <div className="card-footer d-flex justify-content-between">
             <p className="align-self-center mb-0">{title}</p>
