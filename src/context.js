@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import { storeProducts, detailProduct } from "./data";
+import { storeProducts } from "./data";
 
 const ProductContext = React.createContext();
-//provider
-
-//consumer
-
 class ProductProvider extends Component {
   state = {
     products: [],
     detailProduct: {},
-    cart: []
+    cart: [],
+    modalOpen: false,
+    modalProduct: {}
   };
 
   componentDidMount() {
@@ -52,13 +50,30 @@ class ProductProvider extends Component {
     });
   };
 
+  openModal = id => {
+    const product = this.getItem(id);
+    this.setState({
+      modalOpen: true,
+      modalProduct: product
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      modalOpen: false,
+      modalProduct: {}
+    });
+  };
+
   render() {
     return (
       <ProductContext.Provider
         value={{
           ...this.state,
           handleDetail: this.handleDetail,
-          addToCart: this.addToCart
+          addToCart: this.addToCart,
+          openModal: this.openModal,
+          closeModal: this.closeModal
         }}
       >
         {this.props.children}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { ProductConsumer } from "../context";
 import { ButtonContainer } from "./Button";
+import PropTypes from "prop-types";
 
 class Details extends Component {
   render() {
@@ -55,6 +56,7 @@ class Details extends Component {
                       disabled={inCart ? true : false}
                       onClick={() => {
                         value.addToCart(id);
+                        value.openModal(id);
                       }}
                     >
                       {inCart ? "in cart" : "add to cart"}
@@ -69,5 +71,17 @@ class Details extends Component {
     );
   }
 }
+
+Details.protoTypes = {
+  detailProduct: PropTypes.shape({
+    id: PropTypes.number,
+    img: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    inCart: PropTypes.bool,
+    company: PropTypes.string,
+    info: PropTypes.string
+  }).isRequired
+};
 
 export default Details;
